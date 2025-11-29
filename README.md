@@ -24,10 +24,19 @@ A comprehensive AI-powered healthcare platform featuring predictive analytics, s
 - **MRI Analysis**: Upload and analyze medical imaging
 - **Face Analysis**: Facial recognition for health indicators
 
-### 💬 AI ChatBot
-- Intelligent health assistant
-- Medical query support
-- 24/7 availability
+### 💬 AI ChatBot (MediBot) - **NEW!** 🤖
+- **Speech-to-Speech** - Voice input & AI voice responses powered by Gemini
+- **Medical Knowledge Base** - Context-aware responses with medical definitions
+- **Emergency Detection** - Automatic detection of life-threatening symptoms
+- **Smart Tools**:
+  - 📋 **Symptom Report Generator** - Professional medical reports for doctors
+  - 🩺 **AI Symptom Checker** - Intelligent symptom analysis with recommendations
+  - 🍽️ **Meal Planner** - Personalized meal plans based on health conditions
+- **Real-time Audio Playback** - Play/pause controls for AI voice responses
+- **Voice Recording** - Record and send voice messages
+- **Medical Context Cards** - Related medical terms displayed with definitions
+- **Downloadable Reports** - Save symptom reports, meal plans as text files
+- **Markdown Support** - Rich text formatting in chat responses
 
 ### 🎯 Wellness Features
 - **Personalized Health Plans**: Custom diet and exercise recommendations
@@ -48,6 +57,13 @@ A comprehensive AI-powered healthcare platform featuring predictive analytics, s
 - **Tailwind CSS** - Utility-first styling
 - **Lucide React** - Beautiful icon system
 
+### AI & ML
+- **Google Gemini AI** - Advanced conversational AI with multimodal support
+  - `gemini-2.5-flash` - Chat and content generation
+  - `gemini-2.5-flash-preview-tts` - Text-to-speech voice synthesis
+- **@google/genai** - Official Gemini SDK
+- **React Markdown** - Markdown rendering in chat
+
 ### Design System
 - Custom black and light blue color palette
 - Light and dark mode support
@@ -63,6 +79,7 @@ A comprehensive AI-powered healthcare platform featuring predictive analytics, s
 ### Prerequisites
 - Node.js 18+ 
 - npm, yarn, or pnpm
+- **Gemini API Key** (free from Google AI Studio)
 
 ### Installation
 
@@ -77,12 +94,25 @@ A comprehensive AI-powered healthcare platform featuring predictive analytics, s
    npm install
    ```
 
-3. **Start the development server**
+3. **Configure Gemini API Key** ⚠️ **REQUIRED for ChatBot**
+   
+   Get your free API key:
+   - Visit [Google AI Studio](https://aistudio.google.com/app/apikey)
+   - Sign in with Google account
+   - Click "Create API Key"
+   - Copy your API key
+
+   Create/edit `.env` file in the project root:
+   ```env
+   VITE_GEMINI_API_KEY=your_actual_gemini_api_key_here
+   ```
+
+4. **Start the development server**
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to `http://localhost:8080` (or the port shown in terminal)
 
 ### Build for Production
@@ -106,17 +136,32 @@ healthai-guardian/
 ├── public/              # Static assets
 ├── src/
 │   ├── components/      # React components
+│   │   ├── chatbot/     # 🆕 ChatBot components
+│   │   │   ├── ChatBubble.tsx       # Message bubbles with audio
+│   │   │   ├── InputControls.tsx    # Voice recording & text input
+│   │   │   ├── SmartTools.tsx       # Smart tool buttons
+│   │   │   └── Modal.tsx            # Report/plan viewer dialog
 │   │   ├── dashboard/   # Dashboard-specific components
 │   │   ├── layout/      # Layout components (AppLayout, Sidebar)
 │   │   └── ui/          # shadcn/ui components
 │   ├── contexts/        # React contexts (Auth, Theme)
-│   ├── data/            # Dataset files (CSV)
+│   ├── data/            # Dataset files (CSV) + Medical Knowledge
+│   │   ├── medicalKnowledge.ts  # 🆕 Medical database
+│   │   └── index.ts              # 🆕 Data exports
 │   ├── hooks/           # Custom React hooks
 │   ├── lib/             # Utilities and helpers
 │   ├── pages/           # Page components
+│   │   └── ChatBot.tsx  # 🆕 Advanced AI chatbot page
+│   ├── services/        # 🆕 External service integrations
+│   │   └── gemini.ts    # Gemini AI service
+│   ├── types/           # 🆕 TypeScript type definitions
+│   │   └── chatbot.ts   # Chatbot types
+│   ├── utils/           # 🆕 Utility functions
+│   │   └── audio.ts     # Audio processing
 │   ├── App.tsx          # Root component
 │   ├── main.tsx         # Entry point
 │   └── index.css        # Global styles and theme
+├── .env                 # 🆕 Environment variables (API keys)
 ├── package.json
 ├── tailwind.config.ts   # Tailwind configuration
 ├── tsconfig.json        # TypeScript configuration
@@ -140,6 +185,47 @@ The application uses a custom black and light blue theme defined in `src/index.c
 - Cards: Dark gray-black (`hsl(220 16% 10%)`)
 
 To customize colors, edit the CSS variables in `src/index.css`.
+
+## 🤖 ChatBot Features Guide
+
+### Voice Input & Output
+1. **Text Chat**: Type questions and get AI responses
+2. **Voice Input**: Click 🎤 microphone to record questions
+3. **Voice Responses**: Toggle 🔊 speaker icon for AI voice
+4. **Audio Playback**: Click ▶️ play buttons in chat bubbles
+
+### Medical Knowledge
+- Automatically detects medical terms (fever, diabetes, headache, etc.)
+- Shows context cards with:
+  - Definition
+  - Causes & symptoms
+  - Precautions
+  - When to see a doctor
+
+### Emergency Detection
+System automatically detects critical keywords:
+- Chest pain, heart attack, stroke
+- Severe bleeding, difficulty breathing
+- Unconsciousness, blue lips
+- Displays **urgent warning** to call emergency services
+
+### Smart Tools (Unlocked after conversation)
+1. **Symptom Report** 📋
+   - Professional medical report
+   - Formatted for doctors
+   - Downloadable as text file
+
+2. **AI Symptom Checker** 🩺
+   - Analyzes reported symptoms
+   - Lists potential causes
+   - Home remedies & red flags
+   - Educational, not diagnostic
+
+3. **Meal Planner** 🍽️
+   - Personalized meal plan
+   - Based on health conditions
+   - Nutritional guidance
+   - 1-day menu (Breakfast, Lunch, Dinner, Snacks)
 
 ## 📊 Available Datasets
 
@@ -174,6 +260,12 @@ Main layout component with:
 - `ProgressRing`: Circular progress indicators
 - Custom charts with Recharts
 
+### ChatBot Components
+- `ChatBubble`: Message display with audio controls
+- `InputControls`: Voice recording & text input
+- `SmartTools`: Report/checker/planner buttons
+- `Modal`: Full-screen report viewer
+
 ## 🔐 Authentication Flow
 
 1. User visits the app
@@ -192,11 +284,57 @@ Main layout component with:
 | `/symptom-checker` | SymptomChecker | Symptom analysis |
 | `/predictive-analytics` | PredictiveAnalytics | Health predictions |
 | `/health-plans` | HealthPlans | Personalized plans |
-| `/chatbot` | ChatBot | AI assistant |
+| `/chatbot` | ChatBot | 🆕 AI assistant with voice |
 | `/mri-analysis` | MRIAnalysis | Medical imaging |
 | `/face-analysis` | FaceAnalysis | Facial health analysis |
 | `/cognitive-games` | CognitiveGames | Brain training |
 | `/stress-relief` | StressReliefGames | Relaxation games |
+
+## ⚙️ Environment Variables
+
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `VITE_GEMINI_API_KEY` | Google Gemini API key for AI chatbot | Yes (for ChatBot) |
+
+## 🔍 Troubleshooting
+
+### ChatBot Not Responding
+- Check `.env` file has valid `VITE_GEMINI_API_KEY`
+- Restart dev server after adding API key
+- Check browser console for error messages
+- Verify API key at [Google AI Studio](https://aistudio.google.com)
+
+### Voice Recording Not Working
+- Allow microphone permissions in browser
+- Use HTTPS in production (required for mic access)
+- Check browser compatibility (Chrome/Edge recommended)
+
+### Smart Tools Disabled
+- Chat with the bot first (at least 1 exchange)
+- Wait for AI response before clicking tools
+- Check for loading indicator
+
+### TypeScript Errors
+- Run: `npx tsc --noEmit` to check for errors
+- Restart TypeScript server in VS Code: `Ctrl+Shift+P` → "Restart TS Server"
+- Clear cache: `rm -rf node_modules && npm install`
+
+## 📈 API Usage & Limits
+
+**Gemini API Free Tier:**
+- ✅ 15 requests per minute
+- ✅ 1,500 requests per day
+- ✅ 1 million tokens per day
+
+Perfect for testing and small applications! For production with high traffic, consider upgrading to paid tier.
+
+## 🔒 Security Best Practices
+
+- ✅ API key stored in `.env` (not committed to git)
+- ✅ `.env` added to `.gitignore`
+- ⚠️ Client-side API calls (acceptable for free tier)
+- 🔒 For production: Use server-side API proxy
+- 🔐 Never expose API keys in client code for paid services
 
 ## 🤝 Contributing
 
@@ -214,15 +352,36 @@ This project is open source and available under the MIT License.
 
 ## 🙏 Acknowledgments
 
+- **Google Gemini** for advanced AI capabilities
 - **shadcn/ui** for the beautiful component library
 - **Radix UI** for accessible primitives
 - **Tailwind CSS** for the utility-first framework
 - **Lucide** for the icon system
+- **Vite** for lightning-fast development
 
 ## 📧 Support
 
-For issues, questions, or suggestions, please open an issue on GitHub.
+For issues, questions, or suggestions:
+- Open an issue on GitHub
+- Check `CHATBOT_SETUP.md` for detailed ChatBot configuration
+- Review browser console for runtime errors
+
+## 🎉 Latest Updates
+
+### v2.0 - AI ChatBot Integration
+- ✨ Added advanced AI chatbot with Gemini
+- 🎤 Speech-to-speech communication
+- 🏥 Medical knowledge base integration
+- 🚨 Emergency symptom detection
+- 📋 Smart tools for reports and analysis
+- 🎨 Updated UI with black/light blue theme
 
 ---
 
 **Built with ❤️ for better healthcare accessibility**
+
+🔗 **Quick Links:**
+- [Gemini API Documentation](https://ai.google.dev/docs)
+- [Get Free API Key](https://aistudio.google.com/app/apikey)
+- [shadcn/ui Components](https://ui.shadcn.com/)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
