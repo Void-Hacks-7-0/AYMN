@@ -1,73 +1,228 @@
-# Welcome to your Lovable project
+# HealthAI Guardian 🏥
 
-## Project info
+A comprehensive AI-powered healthcare platform featuring predictive analytics, symptom checking, MRI analysis, mental health support, and personalized health plans. Built with modern web technologies and designed with a sleek black and light blue theme.
 
-**URL**: https://lovable.dev/projects/4be76090-4dac-43cf-8ed4-58bc9a05525d
+## ✨ Features
 
-## How can I edit this code?
+### 🔐 Authentication
+- Secure user authentication with email/password
+- Protected routes for authenticated users
+- Session management with React Context
 
-There are several ways of editing your application.
+### 📊 Dashboard
+- Real-time health metrics visualization
+- Vital signs monitoring (Heart Rate, Blood Pressure, Blood Sugar, Temperature)
+- Interactive progress rings and charts
+- Quick access to all health features
 
-**Use Lovable**
+### 🩺 Health Analysis Tools
+- **Symptom Checker**: AI-powered symptom analysis and recommendations
+- **Predictive Analytics**: Health predictions using machine learning models
+  - Diabetes risk assessment
+  - Stress level analysis
+  - Custom health metrics tracking
+- **MRI Analysis**: Upload and analyze medical imaging
+- **Face Analysis**: Facial recognition for health indicators
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4be76090-4dac-43cf-8ed4-58bc9a05525d) and start prompting.
+### 💬 AI ChatBot
+- Intelligent health assistant
+- Medical query support
+- 24/7 availability
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🎯 Wellness Features
+- **Personalized Health Plans**: Custom diet and exercise recommendations
+- **Cognitive Games**: Brain training and mental fitness exercises
+- **Stress Relief Games**: Relaxation and mindfulness activities
 
-**Use your preferred IDE**
+## 🛠️ Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Frontend Framework
+- **React 18** with TypeScript
+- **Vite** for blazing-fast development
+- **React Router** for navigation
+- **TanStack Query** for data fetching and state management
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### UI Components
+- **shadcn/ui** - High-quality, accessible component library
+- **Radix UI** - Unstyled, accessible UI primitives
+- **Tailwind CSS** - Utility-first styling
+- **Lucide React** - Beautiful icon system
 
-Follow these steps:
+### Design System
+- Custom black and light blue color palette
+- Light and dark mode support
+- Responsive design for all devices
+- Glass morphism effects
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Data Visualization
+- **Recharts** - Interactive charts and graphs
+- Custom progress rings and vital cards
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🚀 Getting Started
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Prerequisites
+- Node.js 18+ 
+- npm, yarn, or pnpm
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd healthai-guardian-main
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to `http://localhost:8080` (or the port shown in terminal)
+
+### Build for Production
+
+```bash
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+The optimized build will be in the `dist` folder.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Preview Production Build
 
-**Use GitHub Codespaces**
+```bash
+npm run preview
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📁 Project Structure
 
-## What technologies are used for this project?
+```
+healthai-guardian/
+├── public/              # Static assets
+├── src/
+│   ├── components/      # React components
+│   │   ├── dashboard/   # Dashboard-specific components
+│   │   ├── layout/      # Layout components (AppLayout, Sidebar)
+│   │   └── ui/          # shadcn/ui components
+│   ├── contexts/        # React contexts (Auth, Theme)
+│   ├── data/            # Dataset files (CSV)
+│   ├── hooks/           # Custom React hooks
+│   ├── lib/             # Utilities and helpers
+│   ├── pages/           # Page components
+│   ├── App.tsx          # Root component
+│   ├── main.tsx         # Entry point
+│   └── index.css        # Global styles and theme
+├── package.json
+├── tailwind.config.ts   # Tailwind configuration
+├── tsconfig.json        # TypeScript configuration
+└── vite.config.ts       # Vite configuration
+```
 
-This project is built with:
+## 🎨 Theme Customization
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The application uses a custom black and light blue theme defined in `src/index.css`:
 
-## How can I deploy this project?
+### Light Mode
+- Background: Very light blue (`hsl(205 100% 97%)`)
+- Foreground: Near-black (`hsl(215 25% 12%)`)
+- Primary: Light blue (`hsl(199 90% 55%)`)
+- Accent: Bright light blue (`hsl(199 95% 60%)`)
 
-Simply open [Lovable](https://lovable.dev/projects/4be76090-4dac-43cf-8ed4-58bc9a05525d) and click on Share -> Publish.
+### Dark Mode
+- Background: Deep near-black (`hsl(220 15% 6%)`)
+- Foreground: Off-white (`hsl(210 40% 98%)`)
+- Primary: Vibrant light blue (`hsl(199 95% 60%)`)
+- Cards: Dark gray-black (`hsl(220 16% 10%)`)
 
-## Can I connect a custom domain to my Lovable project?
+To customize colors, edit the CSS variables in `src/index.css`.
 
-Yes, you can!
+## 📊 Available Datasets
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The application includes sample datasets for analysis:
+- `diabetes_dataset.csv` - Diabetes risk factors
+- `mri_dataset.csv` - Medical imaging data
+- `stress_dataset.csv` - Stress level indicators
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 🔧 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server with hot reload |
+| `npm run build` | Build optimized production bundle |
+| `npm run build:dev` | Build development bundle |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint for code quality |
+
+## 🧩 Key Components
+
+### Protected Routes
+All health features require authentication. The `ProtectedRoute` component handles authorization.
+
+### AppLayout
+Main layout component with:
+- Responsive sidebar navigation
+- Header with theme toggle
+- Mobile-friendly menu
+
+### Dashboard Cards
+- `VitalCard`: Display health metrics
+- `ProgressRing`: Circular progress indicators
+- Custom charts with Recharts
+
+## 🔐 Authentication Flow
+
+1. User visits the app
+2. Redirected to `/auth` if not authenticated
+3. Login with credentials
+4. Access to all protected routes
+5. Session persists in context
+
+## 🌐 Routing Structure
+
+| Route | Component | Description |
+|-------|-----------|-------------|
+| `/` | Index | Landing page |
+| `/auth` | Auth | Login/Register |
+| `/dashboard` | Dashboard | Main dashboard |
+| `/symptom-checker` | SymptomChecker | Symptom analysis |
+| `/predictive-analytics` | PredictiveAnalytics | Health predictions |
+| `/health-plans` | HealthPlans | Personalized plans |
+| `/chatbot` | ChatBot | AI assistant |
+| `/mri-analysis` | MRIAnalysis | Medical imaging |
+| `/face-analysis` | FaceAnalysis | Facial health analysis |
+| `/cognitive-games` | CognitiveGames | Brain training |
+| `/stress-relief` | StressReliefGames | Relaxation games |
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 🙏 Acknowledgments
+
+- **shadcn/ui** for the beautiful component library
+- **Radix UI** for accessible primitives
+- **Tailwind CSS** for the utility-first framework
+- **Lucide** for the icon system
+
+## 📧 Support
+
+For issues, questions, or suggestions, please open an issue on GitHub.
+
+---
+
+**Built with ❤️ for better healthcare accessibility**
